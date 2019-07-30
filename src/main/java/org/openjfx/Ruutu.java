@@ -74,7 +74,15 @@ public class Ruutu extends Pane {
             }
         });
         
-		nappula.setPrefSize(50, 50);
+        if(kentta.annaKentta().pommiMaara == 9) {
+        	nappula.setPrefSize(50, 50);
+        }
+        else if(kentta.annaKentta().pommiMaara == 40) {
+        	nappula.setPrefSize(40, 40);
+        }
+        else if(kentta.annaKentta().pommiMaara == 99) {
+        	nappula.setPrefSize(31, 31);
+        }
 	}
 	
 	/**
@@ -86,11 +94,24 @@ public class Ruutu extends Pane {
 		
 		label.setBorder(new Border(new BorderStroke(Color.LIGHTGREY, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-
-		label.setMinWidth(50);
-		label.setMinHeight(50);
+       
+		if(kentta.annaKentta().pommiMaara == 9) {
+			label.setMinWidth(50);
+			label.setMinHeight(50);
+			label.setFont(Font.font(20));
+        }
+        else if(kentta.annaKentta().pommiMaara == 40) {
+    		label.setMinWidth(40);
+    		label.setMinHeight(40);
+    		label.setFont(Font.font(18));
+        }
+        else if(kentta.annaKentta().pommiMaara == 99) {
+    		label.setMinWidth(30);
+    		label.setMinHeight(30);
+    		label.setFont(Font.font(14));
+        }
+		
 		label.setAlignment(Pos.CENTER);
-		label.setFont(Font.font(20));
 	}
 	
 	public void asetaArvo(int uusiArvo) {
@@ -130,6 +151,10 @@ public class Ruutu extends Pane {
 	 */
 	public boolean nappulaPoistettu() {
 		return nappulaPois;
+	}
+	
+	public Button annaNappula() {
+		return nappula;
 	}
 	
 }

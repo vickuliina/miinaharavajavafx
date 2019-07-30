@@ -7,14 +7,20 @@ public class Miinaharava extends Application {
 	
 	Stage nykyinen;
 	Stage alkuvalikko;
-	Stage pieniKentta;
 
+	
+	Kentta pieniKentta;
+	Kentta keskiKentta;
+	Kentta isoKentta;
 	
     @Override
     public void start(Stage stage) throws Exception {
     	
-    	Kentta kentta = new Kentta("testi", 10, 10);
-    	nykyinen = kentta.annaStage();
+    	pieniKentta = new Kentta("pieni", 8, 9, 400);
+    	//keskiKentta = new Kentta("keski", 16, 40, 640);
+    	//isoKentta = new Kentta("iso", 24, 99, 700);
+    	
+    	nykyinen = pieniKentta.annaStage();
 
     	nykyinen.show();
     }

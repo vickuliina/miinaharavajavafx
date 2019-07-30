@@ -3,6 +3,7 @@ package org.openjfx;
 import java.util.Random;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Kentta {
@@ -12,8 +13,9 @@ public class Kentta {
 	GridPane pohjaRuutuRuudukko;
 	Ruutu[][] ruutuRuudukko;
 	
-	Integer kentanKoko;
-	Integer pommiMaara;
+	int kentanKoko;
+	int pommiMaara;
+	int ruudukonKoko;
 	
 	/**
 	 * Luo uuden kentän
@@ -21,12 +23,13 @@ public class Kentta {
 	 * @param koko, kentän koko pysty ja vaakasuunnassa. Esim koko=10 tarkoittaa 10x10 kokoista kenttää
 	 * @param pommiMaara, pommien määrä kentässä
 	 */
-	public Kentta(String nimi, int kentanKoko, int pommiMaara) {
+	public Kentta(String nimi, int kentanKoko, int pommiMaara, int ruudukonKoko) {
     	kentta = new Stage();
         kentta.setTitle(nimi);
         
         this.kentanKoko = kentanKoko;
         this.pommiMaara = pommiMaara;
+        this.ruudukonKoko = ruudukonKoko;
         
     	luoRuudut();
     	asetaPommit();
@@ -34,12 +37,16 @@ public class Kentta {
     	
 		
 		//TESTI, tulostaa pohjaruudukon
-		for(int a=0; a<10; a++) {
-			for(int b=0; b<10; b++) {
+		for(int a=0; a<kentanKoko; a++) {
+			for(int b=0; b<kentanKoko; b++) {
 				System.out.print(ruutuRuudukko[b][a].annaArvo() + "  |  ");
 			}
 			System.out.println();
 		}
+        
+        //pois!
+        System.out.println("POMMIEN MÄÄRÄ: " + pommiMaara);
+        
 		
 	}
 
@@ -57,12 +64,15 @@ public class Kentta {
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
     			
+    			//ei laita hehekua nappuloiden ympärille
+    			ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
+    			
     			ruutuRuudukko[x][y] = ruutu;
     			pohjaRuutuRuudukko.add(ruutuRuudukko[x][y], x, y);
     		}
     	}
     	
-        scene = new Scene(pohjaRuutuRuudukko, 500, 500);
+        scene = new Scene(pohjaRuutuRuudukko, ruudukonKoko, ruudukonKoko);
         kentta.setScene(scene);
 	}
 	
@@ -79,10 +89,7 @@ public class Kentta {
 			int luku1 = random.nextInt(kentanKoko);
 			int luku2 = random.nextInt(kentanKoko);
 			
-			if(ruutuRuudukko[luku1][luku2].annaArvo() == 9) {
-				return;
-			}
-			else {
+			if(ruutuRuudukko[luku1][luku2].annaArvo() != 9) {
 				ruutuRuudukko[luku1][luku2].asetaArvo(9);
 				pommiMaara -= 1;
 			}
