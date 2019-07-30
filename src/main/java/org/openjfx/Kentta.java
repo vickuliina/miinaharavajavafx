@@ -170,6 +170,34 @@ public class Kentta {
 		int x = ruutu.annaX();
 		int y = ruutu.annaY();
 		
+		int reunaX[] = {x-1, x, x+1};
+		int reunaY[] = {y-1, y, y+1};
+		
+		
+		for(int i=0; i<reunaY.length; i++) {
+			for(int j=0; j<reunaX.length; j++) {
+				
+				//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
+				try {
+					if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().nappulaPoistettu() == false) {
+						
+						if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().annaArvo() == 0) {
+							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaRuutu();
+							avaaNollat(ruutuRuudukko[reunaX[j]][reunaY[i]]);
+						}
+						else {
+							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaRuutu();
+						}
+					
+					}
+				} catch (Exception e) {
+				}
+				
+				
+			}
+		}
+		
+		/*
 		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
 			if(ruutuRuudukko[x-1][y-1].annaRuutu().nappulaPoistettu() == false) {
@@ -302,6 +330,7 @@ public class Kentta {
 		} catch (Exception e) {
 		}
 
+		 */
 	}
 	
 	public Stage annaStage() {
