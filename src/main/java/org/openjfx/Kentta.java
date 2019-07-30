@@ -32,6 +32,16 @@ public class Kentta {
     	luoRuudut();
     	asetaPommit();
     	asetaNumerot();
+    	
+		
+		//TESTI, tulostaa pohjaruudukon
+		for(int a=0; a<10; a++) {
+			for(int b=0; b<10; b++) {
+				System.out.print(ruutuRuudukko[b][a].annaArvo() + "  |  ");
+			}
+			System.out.println();
+		}
+		
 	}
 
 	/**
@@ -63,36 +73,23 @@ public class Kentta {
 	 * pommi = 9
 	 */
 	public void asetaPommit() {
-		ArrayList<Integer> pystyluvut = new ArrayList<>();
-		ArrayList<Integer> vaakaluvut = new ArrayList<>();
-
-		
-		//arvotaan random paikat pommeille
 		while(pommiMaara > 0) {
-			int apu = 0;
-			
 			Random random = new Random();
 			
 			int luku1 = random.nextInt(kentanKoko);
 			int luku2 = random.nextInt(kentanKoko);
-				
-			for(int i=0; i<vaakaluvut.size(); i++) {
-				if(vaakaluvut.get(i).equals(luku1)) {
-					if(pystyluvut.get(i).equals(luku2)) {
-						//luku on jo olemassa
-						apu = 1;
-					}
-				}
-			}
 			
-			if(apu == 0) {
+			if(ruutuRuudukko[luku1][luku2].annaArvo() == 9) {
+				return;
+			}
+			else {
 				ruutuRuudukko[luku1][luku2].asetaArvo(9);
 				pommiMaara -= 1;
-				vaakaluvut.add(luku1);
-				pystyluvut.add(luku2);
 			}
 		}
 	}
+	
+	
 	
 	public void asetaNumerot() {
 		
@@ -164,15 +161,6 @@ public class Kentta {
 					ruutuRuudukko[i][j].asetaArvo(summa);
 				}
 			}
-		}
-		
-		
-		//TESTI, tulostaa pohjaruudukon
-		for(int a=0; a<10; a++) {
-			for(int b=0; b<10; b++) {
-				System.out.print(ruutuRuudukko[b][a].annaArvo() + "  |  ");
-			}
-			System.out.println();
 		}
 	}
 	
