@@ -166,6 +166,12 @@ public class Kentta {
 		}
 	}
 
+	
+	/**
+	 * Avaa ruudun vierekkäiset ruudut ja mikäli jokin ympärillä on myös 0, eli tyhjä,
+	 * kutsuu metodi itseään uudella arvolla.
+	 * @param ruutu, ruutu jonka ympäriltä halutaan nappulat pois
+	 */
 	public void avaaNollat(Ruutu ruutu) {
 		int x = ruutu.annaX();
 		int y = ruutu.annaY();
@@ -196,141 +202,6 @@ public class Kentta {
 				
 			}
 		}
-		
-		/*
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x-1][y-1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x-1][y-1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x-1][y-1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x-1][y-1]);
-				}
-				else {
-					ruutuRuudukko[x-1][y-1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-		
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x-1][y].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x-1][y].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x-1][y].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x-1][y]);
-				}
-				else {
-					ruutuRuudukko[x-1][y].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-
-
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x][y-1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x][y-1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x][y-1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x][y-1]);
-				}
-				else {
-					ruutuRuudukko[x][y-1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x+1][y+1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x+1][y+1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x+1][y+1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x+1][y+1]);
-				}
-				else {
-					ruutuRuudukko[x+1][y+1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x+1][y].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x+1][y].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x+1][y].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x+1][y]);
-				}
-				else {
-					ruutuRuudukko[x+1][y].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x][y+1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x][y+1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x][y+1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x][y+1]);
-				}
-				else {
-					ruutuRuudukko[x][y+1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-		
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x-1][y+1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x-1][y+1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x-1][y+1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x-1][y+1]);
-				}
-				else {
-					ruutuRuudukko[x-1][y+1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-		
-		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
-		try {
-			if(ruutuRuudukko[x+1][y-1].annaRuutu().nappulaPoistettu() == false) {
-				
-				if(ruutuRuudukko[x+1][y-1].annaRuutu().annaArvo() == 0) {
-					ruutuRuudukko[x+1][y-1].annaRuutu().poistaRuutu();
-					avaaNollat(ruutuRuudukko[x+1][y-1]);
-				}
-				else {
-					ruutuRuudukko[x+1][y-1].annaRuutu().poistaRuutu();
-				}
-			
-			}
-		} catch (Exception e) {
-		}
-
-		 */
 	}
 	
 	public Stage annaStage() {

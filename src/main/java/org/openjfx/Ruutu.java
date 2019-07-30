@@ -107,7 +107,6 @@ public class Ruutu extends Pane {
         if(annaArvo() != 0) {
         	label.setText(Integer.toString(arvo));
         }
-        
         label.setVisible(true);
         nappulaPois = true;
 	}
