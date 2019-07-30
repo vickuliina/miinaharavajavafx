@@ -101,10 +101,13 @@ public class Ruutu extends Pane {
 		return this.arvo;
 	}
 	
-	public void poistaNollaRuutu() {
+	public void poistaRuutu() {
         nappula.setVisible(false);
-        //asetaArvo(0);
-        //label.setText(Integer.toString(arvo));
+        
+        if(annaArvo() != 0) {
+        	label.setText(Integer.toString(arvo));
+        }
+        
         label.setVisible(true);
         nappulaPois = true;
 	}

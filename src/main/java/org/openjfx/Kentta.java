@@ -169,74 +169,139 @@ public class Kentta {
 	public void avaaNollat(Ruutu ruutu) {
 		int x = ruutu.annaX();
 		int y = ruutu.annaY();
-	
+		
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x-1][y-1].annaArvo() == 0) {
-				ruutuRuudukko[x-1][y-1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x-1][y-1]);
+			if(ruutuRuudukko[x-1][y-1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x-1][y-1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x-1][y-1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x-1][y-1]);
+				}
+				else {
+					ruutuRuudukko[x-1][y-1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
 		
-		
-		/*
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x-1][y].annaArvo() == 0) {
-				ruutuRuudukko[x-1][y].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x-1][y]);
+			if(ruutuRuudukko[x-1][y].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x-1][y].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x-1][y].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x-1][y]);
+				}
+				else {
+					ruutuRuudukko[x-1][y].annaRuutu().poistaRuutu();
+				}
+			
+			}
+		} catch (Exception e) {
+		}
+
+
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
+		try {
+			if(ruutuRuudukko[x][y-1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x][y-1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x][y-1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x][y-1]);
+				}
+				else {
+					ruutuRuudukko[x][y-1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x][y-1].annaArvo() == 0) {
-				ruutuRuudukko[x][y-1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x][y-1]);
+			if(ruutuRuudukko[x+1][y+1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x+1][y+1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x+1][y+1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x+1][y+1]);
+				}
+				else {
+					ruutuRuudukko[x+1][y+1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
+
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x+1][y+1].annaArvo() == 0) {
-				ruutuRuudukko[x+1][y+1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x+1][y+1]);
+			if(ruutuRuudukko[x+1][y].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x+1][y].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x+1][y].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x+1][y]);
+				}
+				else {
+					ruutuRuudukko[x+1][y].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x+1][y].annaArvo() == 0) {
-				ruutuRuudukko[x+1][y].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x+1][y]);
+			if(ruutuRuudukko[x][y+1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x][y+1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x][y+1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x][y+1]);
+				}
+				else {
+					ruutuRuudukko[x][y+1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
+		
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x][y+1].annaArvo() == 0) {
-				ruutuRuudukko[x][y+1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x][y+1]);
+			if(ruutuRuudukko[x-1][y+1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x-1][y+1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x-1][y+1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x-1][y+1]);
+				}
+				else {
+					ruutuRuudukko[x-1][y+1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
 		
+		//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 		try {
-			if(ruutuRuudukko[x-1][y+1].annaArvo() == 0) {
-				ruutuRuudukko[x-1][y+1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x-1][y+1]);
+			if(ruutuRuudukko[x+1][y-1].annaRuutu().nappulaPoistettu() == false) {
+				
+				if(ruutuRuudukko[x+1][y-1].annaRuutu().annaArvo() == 0) {
+					ruutuRuudukko[x+1][y-1].annaRuutu().poistaRuutu();
+					avaaNollat(ruutuRuudukko[x+1][y-1]);
+				}
+				else {
+					ruutuRuudukko[x+1][y-1].annaRuutu().poistaRuutu();
+				}
+			
 			}
 		} catch (Exception e) {
 		}
-		
-		try {
-			if(ruutuRuudukko[x+1][y-1].annaArvo() == 0) {
-				ruutuRuudukko[x+1][y-1].annaRuutu().poistaNollaRuutu();
-				avaaNollat(ruutuRuudukko[x+1][y-1]);
-			}
-		} catch (Exception e) {
-		}
-*/
+
 	}
 	
 	public Stage annaStage() {
