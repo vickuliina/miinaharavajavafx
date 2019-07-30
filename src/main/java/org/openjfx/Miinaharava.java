@@ -14,7 +14,7 @@ public class Miinaharava extends Application {
     public void start(Stage stage) throws Exception {
     	
     	Kentta kentta = new Kentta("testi", 10, 10);
-    	nykyinen = kentta.annaKentta();
+    	nykyinen = kentta.annaStage();
 
     	nykyinen.show();
     }

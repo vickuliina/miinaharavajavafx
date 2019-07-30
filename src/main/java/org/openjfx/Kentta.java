@@ -1,6 +1,5 @@
 package org.openjfx;
 
-import java.util.ArrayList;
 import java.util.Random;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -55,7 +54,7 @@ public class Kentta {
     	for (int y=0; y<kentanKoko; y++) {
     		for (int x=0; x<kentanKoko; x++) {
     			
-    			Ruutu ruutu = new Ruutu();
+    			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
     			
     			ruutuRuudukko[x][y] = ruutu;
@@ -68,9 +67,10 @@ public class Kentta {
 	}
 	
 	
-	/*
+	/**
 	 * Asetetaan randomisti pommit ruutuRuudukkoon
-	 * pommi = 9
+	 * Asettaa ruutuRuudukkoon jokaiselle ruudulle arvon.
+	 * pommin arvo = 9
 	 */
 	public void asetaPommit() {
 		while(pommiMaara > 0) {
@@ -90,7 +90,10 @@ public class Kentta {
 	}
 	
 	
-	
+	/**
+	 * Asettaa ruutuRuudukkoon jokaiselle ruudulle arvon, 
+	 * sen mukaan kuinka monta pommia (eli arvoa 9) on ruudun ympärillä
+	 */
 	public void asetaNumerot() {
 		
 		//käydään läpi löytyykö vierestä pommeja
@@ -100,8 +103,7 @@ public class Kentta {
 				
 				
 				if(ruutuRuudukko[i][j].annaArvo() != 9) {
-					//käydään kaikki vaihtoehdot läpi
-				
+					
 					try {
 						if(ruutuRuudukko[i-1][j-1].annaArvo() == 9) {
 							summa += 1;
@@ -163,8 +165,85 @@ public class Kentta {
 			}
 		}
 	}
+
+	public void avaaNollat(Ruutu ruutu) {
+		int x = ruutu.annaX();
+		int y = ruutu.annaY();
 	
-	public Stage annaKentta() {
+		try {
+			if(ruutuRuudukko[x-1][y-1].annaArvo() == 0) {
+				ruutuRuudukko[x-1][y-1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x-1][y-1]);
+			}
+		} catch (Exception e) {
+		}
+		
+		
+		
+		/*
+		try {
+			if(ruutuRuudukko[x-1][y].annaArvo() == 0) {
+				ruutuRuudukko[x-1][y].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x-1][y]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x][y-1].annaArvo() == 0) {
+				ruutuRuudukko[x][y-1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x][y-1]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x+1][y+1].annaArvo() == 0) {
+				ruutuRuudukko[x+1][y+1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x+1][y+1]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x+1][y].annaArvo() == 0) {
+				ruutuRuudukko[x+1][y].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x+1][y]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x][y+1].annaArvo() == 0) {
+				ruutuRuudukko[x][y+1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x][y+1]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x-1][y+1].annaArvo() == 0) {
+				ruutuRuudukko[x-1][y+1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x-1][y+1]);
+			}
+		} catch (Exception e) {
+		}
+		
+		try {
+			if(ruutuRuudukko[x+1][y-1].annaArvo() == 0) {
+				ruutuRuudukko[x+1][y-1].annaRuutu().poistaNollaRuutu();
+				avaaNollat(ruutuRuudukko[x+1][y-1]);
+			}
+		} catch (Exception e) {
+		}
+*/
+	}
+	
+	public Stage annaStage() {
 		return kentta;
+	}
+	
+	public Kentta annaKentta() {
+		return this;
 	}
 }
