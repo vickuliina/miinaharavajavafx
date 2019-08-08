@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -47,12 +48,23 @@ public class Ruutu extends Pane {
 		
 		this.getChildren().add(label);
 		
-		//nappulan toiminnallisuus
-        nappula.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-            	
+		
+		nappula.setOnMouseClicked(e -> {
+			if(e.getButton() == MouseButton.SECONDARY) {
+				if(nappula.getText().equals("")) {
+					nappula.setText("L");
+				}
+				else {
+					nappula.setText("");
+				}
+				
+			}
+			else if (e.getButton() == MouseButton.PRIMARY) {
+				
+				if(nappula.getText().equals("L")) {
+					return;
+				}
+				
             	if(arvo == 0) {
             		nappula.setVisible(false);
             		nappulaPois = true;
@@ -71,11 +83,12 @@ public class Ruutu extends Pane {
                 
                 label.setVisible(true);
 
-            }
-        });
+			}
+		});
         
         if(kentta.annaKentta().pommiMaara == 9) {
-        	nappula.setPrefSize(50, 50);
+        	nappula.setMinSize(50, 50);
+        	//nappula.setPrefSize(50, 50);
         }
         else if(kentta.annaKentta().pommiMaara == 40) {
         	nappula.setPrefSize(40, 40);
@@ -96,8 +109,9 @@ public class Ruutu extends Pane {
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
        
 		if(kentta.annaKentta().pommiMaara == 9) {
-			label.setMinWidth(50);
-			label.setMinHeight(50);
+			//label.setPrefSize(50, 50);
+			label.setMinSize(50, 50);
+			//label.setMinHeight(50);
 			label.setFont(Font.font(20));
         }
         else if(kentta.annaKentta().pommiMaara == 40) {
