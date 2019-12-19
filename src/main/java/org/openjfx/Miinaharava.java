@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Miinaharava extends Application {
-	
 	Stage nykyinen;
 	Stage alkuvalikko;
 
@@ -19,7 +18,7 @@ public class Miinaharava extends Application {
 	 */
     public void start(Stage stage) throws Exception {
     	
-    	pieniKentta = new Kentta("pieni", 8, 9, 400);
+    	pieniKentta = new Kentta("pieni", 8, 9, 400, 500);
     	//keskiKentta = new Kentta("keski", 16, 40, 640);
     	//isoKentta = new Kentta("iso", 24, 99, 700);
     	

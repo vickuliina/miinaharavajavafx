@@ -18,15 +18,24 @@ public class Kentta {
 	int kentanKoko;
 	int pommiMaara;
 	int ruudukonKoko;
+	int ikkunanKoko;
 	
 	/**
 	 * Luo uuden kentän
 	 * @param nimi, kentän nimi
+	 * @param kentanKoko kentän koko, ruudukkojen määrä leveys- ja pituussuunnassa
 	 * @param pommiMaara, pommien määrä kentässä
+	 * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
 	 */
-	public Kentta(String nimi, int kentanKoko, int pommiMaara, int ruudukonKoko) {
+	public Kentta(String nimi, int kentanKoko, int pommiMaara, int ruudukonKoko, int ikkunanKoko) {
     	kentta = new Stage();
         kentta.setTitle(nimi);
+
+        this.ikkunanKoko = ikkunanKoko;
+
+        //asettaa ikkunan hieman leveämmäksi, kuin mitä kenttä
+        kentta.setWidth(ikkunanKoko);
+        kentta.setHeight(ikkunanKoko);
         
         this.kentanKoko = kentanKoko;
         this.pommiMaara = pommiMaara;
@@ -67,8 +76,8 @@ public class Kentta {
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
     			
-    			//ei laita hehkua nappuloiden ympärille, ei kuitenkaan poista sita kokonaan
-    			ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
+    			//ei laita hehkua nappuloiden ympärille, ei kuitenkaan poista sita kokonaan. Ei toimiva!
+    			//ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
     			
     			ruutuRuudukko[x][y] = ruutu;
     			pohjaRuutuRuudukko.add(ruutuRuudukko[x][y], x, y);
