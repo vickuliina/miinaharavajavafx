@@ -5,17 +5,17 @@ import java.util.Random;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Kentta {
 	Stage kentta;
 	Scene scene;
 	
-	GridPane pohjaRuutuRuudukko;
+	GridPane pohjaRuudukko;
 	Ruutu[][] ruutuRuudukko;
 	
-	int kentanKoko;
+	int leveys;
+	int pituus;
 	int pommiMaara;
 	int ruudukonKoko;
 	int ikkunanKoko;
@@ -23,11 +23,12 @@ public class Kentta {
 	/**
 	 * Luo uuden kentän
 	 * @param nimi, kentän nimi
-	 * @param kentanKoko kentän koko, ruudukkojen määrä leveys- ja pituussuunnassa
+	 * @param leveys kentän koko leveyssuunnassa
+	 * @param pituus, kentan koko pituussuunnassa
 	 * @param pommiMaara, pommien määrä kentässä
 	 * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
 	 */
-	public Kentta(String nimi, int kentanKoko, int pommiMaara, int ruudukonKoko, int ikkunanKoko) {
+	public Kentta(String nimi, int leveys, int pituus, int pommiMaara, int ruudukonKoko, int ikkunanKoko) {
     	kentta = new Stage();
         kentta.setTitle(nimi);
 
@@ -37,7 +38,8 @@ public class Kentta {
         kentta.setWidth(ikkunanKoko);
         kentta.setHeight(ikkunanKoko);
         
-        this.kentanKoko = kentanKoko;
+        this.leveys = leveys;
+        this.pituus = pituus;
         this.pommiMaara = pommiMaara;
         this.ruudukonKoko = ruudukonKoko;
         
@@ -47,9 +49,9 @@ public class Kentta {
     	
 		
 		//TESTI, tulostaa pohjaruudukon komentoriville
-		for(int a=0; a<kentanKoko; a++) {
-			for(int b=0; b<kentanKoko; b++) {
-				System.out.print(ruutuRuudukko[b][a].annaArvo() + "  |  ");
+		for(int a=0; a<leveys; a++) {
+			for(int b=0; b<pituus; b++) {
+				System.out.print(ruutuRuudukko[a][b].annaArvo() + "  |  ");
 			}
 			System.out.println();
 		}
@@ -64,14 +66,14 @@ public class Kentta {
 	 * Luo kenttaan ruudut ja asettaa ne näkyville
 	 */
 	public void luoRuudut() {
-    	pohjaRuutuRuudukko = new GridPane();
-    	pohjaRuutuRuudukko.setAlignment(Pos.CENTER);
+    	pohjaRuudukko = new GridPane();
+    	pohjaRuudukko.setAlignment(Pos.CENTER);
 
-    	ruutuRuudukko = new Ruutu[kentanKoko][kentanKoko];
+    	ruutuRuudukko = new Ruutu[leveys][pituus];
 
     	//asettaa ruudut ruuturuudukkoon ja lisaa ruuturuudukon pohjaruuturuudukkoon, eli GridPaneen
-    	for (int y=0; y<kentanKoko; y++) {
-    		for (int x=0; x<kentanKoko; x++) {
+    	for (int x=0; x<leveys; x++) {
+    		for (int y=0; y<pituus; y++) {
     			
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
@@ -80,11 +82,11 @@ public class Kentta {
     			//ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
     			
     			ruutuRuudukko[x][y] = ruutu;
-    			pohjaRuutuRuudukko.add(ruutuRuudukko[x][y], x, y);
+    			pohjaRuudukko.add(ruutuRuudukko[x][y], x, y);
     		}
     	}
 
-        scene = new Scene(pohjaRuutuRuudukko, ruudukonKoko, ruudukonKoko);
+        scene = new Scene(pohjaRuudukko, ruudukonKoko, ruudukonKoko);
         kentta.setScene(scene);
 	}
 	
@@ -98,8 +100,8 @@ public class Kentta {
 		while(pommiMaara > 0) {
 			Random random = new Random();
 			
-			int luku1 = random.nextInt(kentanKoko);
-			int luku2 = random.nextInt(kentanKoko);
+			int luku1 = random.nextInt(leveys);
+			int luku2 = random.nextInt(pituus);
 			
 			if(ruutuRuudukko[luku1][luku2].annaArvo() != 9) {
 				ruutuRuudukko[luku1][luku2].asetaArvo(9);
@@ -116,8 +118,8 @@ public class Kentta {
 	public void asetaNumerot() {
 		
 		//käydään läpi löytyykö vierestä pommeja
-		for(int i=0; i<kentanKoko; i++) {
-			for(int j=0; j<kentanKoko; j++) {
+		for(int i=0; i<leveys; i++) {
+			for(int j=0; j<pituus; j++) {
 				int summa = 0;
 				
 				if(ruutuRuudukko[i][j].annaArvo() != 9) {
@@ -227,8 +229,8 @@ public class Kentta {
 	 * Käytetään kun peli loppuu
 	 */
 	public void avaaRuudut() {
-		for(int i=0; i<kentanKoko; i++) {
-			for(int j=0; j<kentanKoko; j++) {
+		for(int i=0; i<leveys; i++) {
+			for(int j=0; j<pituus; j++) {
 				ruutuRuudukko[i][j].poistaNappula();
 			}
 		}

@@ -18,7 +18,7 @@ public class Miinaharava extends Application {
 	 */
     public void start(Stage stage) throws Exception {
     	
-    	pieniKentta = new Kentta("pieni", 8, 9, 400, 500);
+    	pieniKentta = new Kentta("pieni", 8, 8,9, 400, 500);
     	//keskiKentta = new Kentta("keski", 16, 40, 640);
     	//isoKentta = new Kentta("iso", 24, 99, 700);
     	
@@ -27,13 +27,6 @@ public class Miinaharava extends Application {
     	nykyinen.show();
     }
 
-    /*
-    public void peliLoppu() {
-		System.out.println("Peli päättyi!");
-		pieniKentta.avaaRuudut();
-	}
-
-     */
     
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
