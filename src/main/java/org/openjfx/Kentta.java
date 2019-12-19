@@ -49,9 +49,9 @@ public class Kentta {
     	
 		
 		//TESTI, tulostaa pohjaruudukon komentoriville
-		for(int a=0; a<leveys; a++) {
-			for(int b=0; b<pituus; b++) {
-				System.out.print(ruutuRuudukko[a][b].annaArvo() + "  |  ");
+		for(int y=0; y<pituus; y++) {
+			for(int x=0; x<leveys; x++) {
+				System.out.print(ruutuRuudukko[x][y].annaArvo() + "  |  ");
 			}
 			System.out.println();
 		}
@@ -72,8 +72,8 @@ public class Kentta {
     	ruutuRuudukko = new Ruutu[leveys][pituus];
 
     	//asettaa ruudut ruuturuudukkoon ja lisaa ruuturuudukon pohjaruuturuudukkoon, eli GridPaneen
-    	for (int x=0; x<leveys; x++) {
-    		for (int y=0; y<pituus; y++) {
+    	for (int y=0; y<pituus; y++) {
+    		for (int x=0; x<leveys; x++) {
     			
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);

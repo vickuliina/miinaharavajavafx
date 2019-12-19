@@ -28,8 +28,8 @@ public class Ruutu extends Pane {
 	boolean nappulaPois;
 	
 	//kertoo mikä nappula on nappulaRuudukossa kyseessä
-	int x;
-	int y;
+	int x; //leveys
+	int y; //pituus
 
 	/**
 	 * luo ruudun
@@ -114,7 +114,6 @@ public class Ruutu extends Pane {
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
        
 		label.setPrefSize(50, 50);
-		
 		label.setAlignment(Pos.CENTER);
 	}
 	
