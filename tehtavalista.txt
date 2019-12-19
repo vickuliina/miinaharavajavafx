@@ -1,0 +1,11 @@
+Miinaharava
+
+- kentän toimivuus yleisesti
+ - kentän hienosäätäminen
+  - reunat hohtamattomia
+ - pelin loppuminen, pommiin osuminen
+ - kuvat peliin
+
+- eri kenttien koot, voisiko laittaa mitat omiin enumeihin?
+- yläpalkki, aika ja pelin kulku (lippujen määrä...)
+- ajat ylös johonkin rankinlistaan, pelien tallentaminen
