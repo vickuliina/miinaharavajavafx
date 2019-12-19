@@ -86,7 +86,9 @@ public class Ruutu extends Pane {
             	else {
 	                nappula.setVisible(false);
 	                if(arvo == 9) {
-	                	label.setText("*");
+	                	//peli päättyy
+						kentta.avaaRuudut();
+						System.out.println("Peli loppui");
 	                }
 	                else {
 	                    label.setText(Integer.toString(arvo));

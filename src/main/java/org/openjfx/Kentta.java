@@ -221,7 +221,19 @@ public class Kentta {
 			}
 		}
 	}
-	
+
+	/**
+	 * Avaa kentän kaikki ruudut
+	 * Käytetään kun peli loppuu
+	 */
+	public void avaaRuudut() {
+		for(int i=0; i<kentanKoko; i++) {
+			for(int j=0; j<kentanKoko; j++) {
+				ruutuRuudukko[i][j].poistaNappula();
+			}
+		}
+	}
+
 	public Stage annaStage() {
 		return kentta;
 	}

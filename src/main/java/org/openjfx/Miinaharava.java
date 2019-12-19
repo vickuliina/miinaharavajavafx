@@ -27,6 +27,13 @@ public class Miinaharava extends Application {
     	nykyinen.show();
     }
 
+    /*
+    public void peliLoppu() {
+		System.out.println("Peli päättyi!");
+		pieniKentta.avaaRuudut();
+	}
+
+     */
     
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
