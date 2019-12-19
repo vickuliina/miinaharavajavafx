@@ -30,7 +30,13 @@ public class Ruutu extends Pane {
 	//kertoo mikä nappula on nappulaRuudukossa kyseessä
 	int x;
 	int y;
-	
+
+	/**
+	 * luo ruudun
+	 * @param x, ruudun vaakarivin paikka kentassa
+	 * @param y, ruudun pystyrivin poikka kentassa
+	 * @param kentta, kentta, johon ruudut asetetaan
+	 */
 	public Ruutu(int x, int y, Kentta kentta) {
 		this.kentta = kentta;
 		this.x = x;
@@ -47,9 +53,11 @@ public class Ruutu extends Pane {
 		label.setVisible(false);
 		
 		this.getChildren().add(label);
-		
-		
+
 		nappula.setOnMouseClicked(e -> {
+
+			//nappulaa painetaan hiiren oikealla painikkeella
+			//Asettaa tai poistaa nappulan paalta kirjaimen, joka on pelissa ns. liputettu ruutu
 			if(e.getButton() == MouseButton.SECONDARY) {
 				if(nappula.getText().equals("")) {
 					nappula.setText("L");
@@ -59,19 +67,23 @@ public class Ruutu extends Pane {
 				}
 				
 			}
+			//nappulaa painetaan hiiren vasemmalla painikkeella
 			else if (e.getButton() == MouseButton.PRIMARY) {
-				
+
+				//nappula on liputettu
 				if(nappula.getText().equals("L")) {
 					return;
 				}
-				
+
+				//nappulan alla olevan labelin arvo on 0
             	if(arvo == 0) {
             		nappula.setVisible(false);
             		nappulaPois = true;
             		kentta.avaaNollat(annaRuutu());
             	}
+
+            	//nappula poistetaan ja paljastetaan sen alla oleva label
             	else {
-            	
 	                nappula.setVisible(false);
 	                if(arvo == 9) {
 	                	label.setText("*");
@@ -85,17 +97,8 @@ public class Ruutu extends Pane {
 
 			}
 		});
-        
-        if(kentta.annaKentta().pommiMaara == 9) {
-        	nappula.setMinSize(50, 50);
-        	//nappula.setPrefSize(50, 50);
-        }
-        else if(kentta.annaKentta().pommiMaara == 40) {
-        	nappula.setPrefSize(40, 40);
-        }
-        else if(kentta.annaKentta().pommiMaara == 99) {
-        	nappula.setPrefSize(31, 31);
-        }
+
+		nappula.setPrefSize(50, 50);
 	}
 	
 	/**
@@ -108,22 +111,7 @@ public class Ruutu extends Pane {
 		label.setBorder(new Border(new BorderStroke(Color.LIGHTGREY, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
        
-		if(kentta.annaKentta().pommiMaara == 9) {
-			//label.setPrefSize(50, 50);
-			label.setMinSize(50, 50);
-			//label.setMinHeight(50);
-			label.setFont(Font.font(20));
-        }
-        else if(kentta.annaKentta().pommiMaara == 40) {
-    		label.setMinWidth(40);
-    		label.setMinHeight(40);
-    		label.setFont(Font.font(18));
-        }
-        else if(kentta.annaKentta().pommiMaara == 99) {
-    		label.setMinWidth(30);
-    		label.setMinHeight(30);
-    		label.setFont(Font.font(14));
-        }
+		label.setPrefSize(50, 50);
 		
 		label.setAlignment(Pos.CENTER);
 	}
@@ -135,8 +123,11 @@ public class Ruutu extends Pane {
 	public int annaArvo() {
 		return this.arvo;
 	}
-	
-	public void poistaRuutu() {
+
+	/**
+	 * Poistaa nappulan ja ruudun labelin arvon
+	 */
+	public void poistaNappula() {
         nappula.setVisible(false);
         
         if(annaArvo() != 0) {

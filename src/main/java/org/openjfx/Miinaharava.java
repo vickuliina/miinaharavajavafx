@@ -14,6 +14,9 @@ public class Miinaharava extends Application {
 	Kentta isoKentta;
 	
     @Override
+	/**
+	 * Itse pelin aloitus, toimii alkuun vain pienellä kentalla, muut rakennetaan myohemmin
+	 */
     public void start(Stage stage) throws Exception {
     	
     	pieniKentta = new Kentta("pieni", 8, 9, 400);

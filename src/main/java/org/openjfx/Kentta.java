@@ -1,6 +1,8 @@
 package org.openjfx;
 
 import java.util.Random;
+
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -20,7 +22,6 @@ public class Kentta {
 	/**
 	 * Luo uuden kentän
 	 * @param nimi, kentän nimi
-	 * @param koko, kentän koko pysty ja vaakasuunnassa. Esim koko=10 tarkoittaa 10x10 kokoista kenttää
 	 * @param pommiMaara, pommien määrä kentässä
 	 */
 	public Kentta(String nimi, int kentanKoko, int pommiMaara, int ruudukonKoko) {
@@ -36,7 +37,7 @@ public class Kentta {
     	asetaNumerot();
     	
 		
-		//TESTI, tulostaa pohjaruudukon
+		//TESTI, tulostaa pohjaruudukon komentoriville
 		for(int a=0; a<kentanKoko; a++) {
 			for(int b=0; b<kentanKoko; b++) {
 				System.out.print(ruutuRuudukko[b][a].annaArvo() + "  |  ");
@@ -44,7 +45,7 @@ public class Kentta {
 			System.out.println();
 		}
         
-        //pois!
+        //tulostaa pommien maaran komentoriville
         System.out.println("POMMIEN MÄÄRÄ: " + pommiMaara);
         
 		
@@ -52,26 +53,28 @@ public class Kentta {
 
 	/**
 	 * Luo kenttaan ruudut ja asettaa ne näkyville
-	 * @param koko, kentän koko pysty ja vaakasuunnassa. Esim koko=10 tarkoittaa 10x10 kokoista ruudukkoa
 	 */
 	public void luoRuudut() {
     	pohjaRuutuRuudukko = new GridPane();
+    	pohjaRuutuRuudukko.setAlignment(Pos.CENTER);
+
     	ruutuRuudukko = new Ruutu[kentanKoko][kentanKoko];
-    	
+
+    	//asettaa ruudut ruuturuudukkoon ja lisaa ruuturuudukon pohjaruuturuudukkoon, eli GridPaneen
     	for (int y=0; y<kentanKoko; y++) {
     		for (int x=0; x<kentanKoko; x++) {
     			
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
     			
-    			//ei laita hehekua nappuloiden ympärille
+    			//ei laita hehkua nappuloiden ympärille, ei kuitenkaan poista sita kokonaan
     			ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
     			
     			ruutuRuudukko[x][y] = ruutu;
     			pohjaRuutuRuudukko.add(ruutuRuudukko[x][y], x, y);
     		}
     	}
-    	
+
         scene = new Scene(pohjaRuutuRuudukko, ruudukonKoko, ruudukonKoko);
         kentta.setScene(scene);
 	}
@@ -107,7 +110,6 @@ public class Kentta {
 		for(int i=0; i<kentanKoko; i++) {
 			for(int j=0; j<kentanKoko; j++) {
 				int summa = 0;
-				
 				
 				if(ruutuRuudukko[i][j].annaArvo() != 9) {
 					
@@ -195,11 +197,11 @@ public class Kentta {
 					if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().nappulaPoistettu() == false) {
 						
 						if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().annaArvo() == 0) {
-							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaRuutu();
+							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
 							avaaNollat(ruutuRuudukko[reunaX[j]][reunaY[i]]);
 						}
 						else {
-							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaRuutu();
+							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
 						}
 					
 					}
