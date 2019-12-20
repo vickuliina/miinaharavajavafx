@@ -2,10 +2,20 @@ Miinaharava
 
 - kentän toimivuus yleisesti
  - kentän hienosäätäminen
-  - reunat hohtamattomia
+  - reunat hohtamattomia, hehku pois nappuloiden ympäriltä
  - pelin loppuminen, pommiin osuminen
  - kuvat peliin
+  - pommeihin
 
 - eri kenttien koot, voisiko laittaa mitat omiin enumeihin?
 - yläpalkki, aika ja pelin kulku (lippujen määrä...)
 - ajat ylös johonkin rankinlistaan, pelien tallentaminen
+
+
+Stage
+	Scene (alusta, johon GridPane rakentuuu)
+		GridPane ()
+			Ruutu[][]
+				Button
+				Label
+
