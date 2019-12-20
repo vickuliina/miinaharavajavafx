@@ -4,9 +4,14 @@ import java.util.Random;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Kentta {
@@ -14,10 +19,15 @@ public class Kentta {
 	Scene scene;
 
 	BorderPane alustaPaneeli;
+
 	GridPane ruudukko;
-	// joku ylapalkki;
 	Ruutu[][] ruudut;
-	
+
+	HBox ylapalkki;
+	//joku tekstikentta lippujen lukumäärälle
+	Button uusipeliNappula;
+	//joku aikalabel
+
 	int leveys;
 	int pituus;
 	int pommiMaara;
@@ -46,8 +56,10 @@ public class Kentta {
         this.pituus = pituus;
         this.pommiMaara = pommiMaara;
         this.ruudukonKoko = ruudukonKoko;
-        
-    	luoRuudut();
+
+        luoAlustaPaneeli();
+        luoYlapalkki();
+    	luoRuudukko();
     	asetaPommit();
     	asetaNumerot();
     	
@@ -67,15 +79,25 @@ public class Kentta {
 	}
 
 	/**
-	 * Luo kenttaan ruudut ja asettaa ne näkyville
+	 * Luo alustapaneelin ja lisää sen Kentta-sceneen
+	 * Annetaan myös scenelle tyylikansio käytettäväksi
 	 */
-	public void luoRuudut() {
-    	ruudukko = new GridPane();
-    	ruudukko.setAlignment(Pos.CENTER);
+	public void luoAlustaPaneeli() {
+		alustaPaneeli = new BorderPane();
+		scene = new Scene(alustaPaneeli, ruudukonKoko, ruudukonKoko);
+		scene.getStylesheets().add("tyyli.css");
 
+		kentta.setScene(scene);
+	}
+
+	/**
+	 * Luo kentan peliruudukon ja lisää sen alustaPaneeliin
+	 */
+	public void luoRuudukko() {
+    	ruudukko = new GridPane();
     	ruudut = new Ruutu[leveys][pituus];
 
-    	//asettaa ruudut ruuturuudukkoon ja lisaa ruuturuudukon pohjaruuturuudukkoon, eli GridPaneen
+    	//luo ja asettaa Ruutu-oliot(eli ruudut) ruudukkoon
     	for (int y=0; y<pituus; y++) {
     		for (int x=0; x<leveys; x++) {
     			
@@ -86,23 +108,37 @@ public class Kentta {
     		}
     	}
 
-    	alustaPaneeli = new BorderPane();
-
     	//lisataan ruudukko alustapaneeliin
+		ruudukko.setAlignment(Pos.CENTER);
     	alustaPaneeli.setCenter(ruudukko);
-
-    	/*
-    	Luodaan ylapalkki
-    	lisataan ylapalkki alustapaneeliin
-    	 */
-
-		//lisataan alustapaneeli sceneen ja annetaan scenelle tyylikansio kaytettavaksi
-		scene = new Scene(alustaPaneeli, ruudukonKoko, ruudukonKoko);
-		scene.getStylesheets().add("tyyli.css");
-
-        kentta.setScene(scene);
 	}
-	
+
+	/**
+	 * Tekee yläpalkin ja lisää sen alustaPaneeliin
+	 */
+	public void luoYlapalkki() {
+		ylapalkki = new HBox();
+
+		//luodaan lippujenemäärän kertova alue
+		Text testiTeksti = new Text("Testi2");
+
+
+		//luodaan "uusipeli"-nappula
+		uusipeliNappula = new Button("Uusi Peli");
+		uusipeliNappula.setPrefSize(80,40);
+
+		//luodaan aika ruutu
+
+
+		//lisataan alueet ylapalkkiin
+		ylapalkki.getChildren().add(testiTeksti);
+		ylapalkki.getChildren().add(uusipeliNappula);
+
+
+		ylapalkki.setAlignment(Pos.CENTER);
+		alustaPaneeli.setTop(ylapalkki);
+	}
+
 	
 	/**
 	 * Asetetaan randomisti pommit ruutuRuudukkoon
