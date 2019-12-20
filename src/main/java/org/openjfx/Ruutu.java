@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Ruutu extends Pane {
-	Kentta kentta;
+	Ruudukko ruudukko;
 	
 	Button nappula;
 	Label label;
@@ -35,10 +35,10 @@ public class Ruutu extends Pane {
 	 * luo ruudun
 	 * @param x, ruudun vaakarivin paikka kentassa
 	 * @param y, ruudun pystyrivin poikka kentassa
-	 * @param kentta, kentta, johon ruudut asetetaan
+	 * @param ruudukko, ruudukko, johon ruudut asetetaan
 	 */
-	public Ruutu(int x, int y, Kentta kentta) {
-		this.kentta = kentta;
+	public Ruutu(int x, int y, Ruudukko ruudukko) {
+		this.ruudukko = ruudukko;
 		this.x = x;
 		this.y = y;
 		
@@ -83,7 +83,7 @@ public class Ruutu extends Pane {
             	if(arvo == 0) {
             		nappula.setVisible(false);
             		nappulaPois = true;
-            		kentta.avaaNollat(annaRuutu());
+            		ruudukko.avaaNollat(annaRuutu());
             	}
 
             	//nappula poistetaan ja paljastetaan sen alla oleva label
@@ -91,7 +91,7 @@ public class Ruutu extends Pane {
 	                nappula.setVisible(false);
 	                if(arvo == 9) {
 	                	//peli päättyy
-						kentta.avaaRuudukko();
+						ruudukko.avaaRuudukko();
 						System.out.println("Peli loppui");
 	                }
 	                else {
