@@ -46,6 +46,10 @@ public class Ruutu extends Pane {
 		
 		nappula = new Button();
 		nappula.setVisible(true);
+
+		//"piilottaa" hehkun pois
+		//nappula.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
+
 		
 		this.getChildren().add(nappula);
 		

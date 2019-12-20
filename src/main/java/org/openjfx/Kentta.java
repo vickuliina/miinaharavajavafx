@@ -4,15 +4,19 @@ import java.util.Random;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Kentta {
 	Stage kentta;
 	Scene scene;
-	
-	GridPane pohjaRuudukko;
-	Ruutu[][] ruutuRuudukko;
+
+	BorderPane alustaPaneeli;
+	GridPane ruudukko;
+	// joku ylapalkki;
+	Ruutu[][] ruudut;
 	
 	int leveys;
 	int pituus;
@@ -51,7 +55,7 @@ public class Kentta {
 		//TESTI, tulostaa pohjaruudukon komentoriville
 		for(int y=0; y<pituus; y++) {
 			for(int x=0; x<leveys; x++) {
-				System.out.print(ruutuRuudukko[x][y].annaArvo() + "  |  ");
+				System.out.print(ruudut[x][y].annaArvo() + "  |  ");
 			}
 			System.out.println();
 		}
@@ -66,10 +70,10 @@ public class Kentta {
 	 * Luo kenttaan ruudut ja asettaa ne näkyville
 	 */
 	public void luoRuudut() {
-    	pohjaRuudukko = new GridPane();
-    	pohjaRuudukko.setAlignment(Pos.CENTER);
+    	ruudukko = new GridPane();
+    	ruudukko.setAlignment(Pos.CENTER);
 
-    	ruutuRuudukko = new Ruutu[leveys][pituus];
+    	ruudut = new Ruutu[leveys][pituus];
 
     	//asettaa ruudut ruuturuudukkoon ja lisaa ruuturuudukon pohjaruuturuudukkoon, eli GridPaneen
     	for (int y=0; y<pituus; y++) {
@@ -77,16 +81,25 @@ public class Kentta {
     			
     			Ruutu ruutu = new Ruutu(x, y, this.annaKentta());
     			ruutu.asetaArvo(0);
-    			
-    			//ei laita hehkua nappuloiden ympärille, ei kuitenkaan poista sita kokonaan. Ei toimiva!
-    			//ruutu.annaNappula().setStyle("-fx-focus-color: transparent; -fx-background-insets: -1.4, 0, 1, 2;");
-    			
-    			ruutuRuudukko[x][y] = ruutu;
-    			pohjaRuudukko.add(ruutuRuudukko[x][y], x, y);
+    			ruudut[x][y] = ruutu;
+    			ruudukko.add(ruudut[x][y], x, y);
     		}
     	}
 
-        scene = new Scene(pohjaRuudukko, ruudukonKoko, ruudukonKoko);
+    	alustaPaneeli = new BorderPane();
+
+    	//lisataan ruudukko alustapaneeliin
+    	alustaPaneeli.setCenter(ruudukko);
+
+    	/*
+    	Luodaan ylapalkki
+    	lisataan ylapalkki alustapaneeliin
+    	 */
+
+		//lisataan alustapaneeli sceneen ja annetaan scenelle tyylikansio kaytettavaksi
+		scene = new Scene(alustaPaneeli, ruudukonKoko, ruudukonKoko);
+		scene.getStylesheets().add("tyyli.css");
+
         kentta.setScene(scene);
 	}
 	
@@ -103,8 +116,8 @@ public class Kentta {
 			int luku1 = random.nextInt(leveys);
 			int luku2 = random.nextInt(pituus);
 			
-			if(ruutuRuudukko[luku1][luku2].annaArvo() != 9) {
-				ruutuRuudukko[luku1][luku2].asetaArvo(9);
+			if(ruudut[luku1][luku2].annaArvo() != 9) {
+				ruudut[luku1][luku2].asetaArvo(9);
 				pommiMaara -= 1;
 			}
 		}
@@ -122,65 +135,65 @@ public class Kentta {
 			for(int j=0; j<pituus; j++) {
 				int summa = 0;
 				
-				if(ruutuRuudukko[i][j].annaArvo() != 9) {
+				if(ruudut[i][j].annaArvo() != 9) {
 					
 					try {
-						if(ruutuRuudukko[i-1][j-1].annaArvo() == 9) {
+						if(ruudut[i-1][j-1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i-1][j].annaArvo() == 9) {
+						if(ruudut[i-1][j].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i][j-1].annaArvo() == 9) {
+						if(ruudut[i][j-1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i+1][j+1].annaArvo() == 9) {
+						if(ruudut[i+1][j+1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i+1][j].annaArvo() == 9) {
+						if(ruudut[i+1][j].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i][j+1].annaArvo() == 9) {
+						if(ruudut[i][j+1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i-1][j+1].annaArvo() == 9) {
+						if(ruudut[i-1][j+1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
 					try {
-						if(ruutuRuudukko[i+1][j-1].annaArvo() == 9) {
+						if(ruudut[i+1][j-1].annaArvo() == 9) {
 							summa += 1;
 						}
 					} catch (Exception e) {
 					}
 					
-					ruutuRuudukko[i][j].asetaArvo(summa);
+					ruudut[i][j].asetaArvo(summa);
 				}
 			}
 		}
@@ -205,14 +218,14 @@ public class Kentta {
 				
 				//Heittää errorin jos nappulaa ei ole olemassa, eli se on poissa
 				try {
-					if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().nappulaPoistettu() == false) {
+					if(ruudut[reunaX[j]][reunaY[i]].annaRuutu().nappulaPoistettu() == false) {
 						
-						if(ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().annaArvo() == 0) {
-							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
-							avaaNollat(ruutuRuudukko[reunaX[j]][reunaY[i]]);
+						if(ruudut[reunaX[j]][reunaY[i]].annaRuutu().annaArvo() == 0) {
+							ruudut[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
+							avaaNollat(ruudut[reunaX[j]][reunaY[i]]);
 						}
 						else {
-							ruutuRuudukko[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
+							ruudut[reunaX[j]][reunaY[i]].annaRuutu().poistaNappula();
 						}
 					
 					}
@@ -231,7 +244,7 @@ public class Kentta {
 	public void avaaRuudut() {
 		for(int i=0; i<leveys; i++) {
 			for(int j=0; j<pituus; j++) {
-				ruutuRuudukko[i][j].poistaNappula();
+				ruudut[i][j].poistaNappula();
 			}
 		}
 	}
