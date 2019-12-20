@@ -91,7 +91,7 @@ public class Ruutu extends Pane {
 	                nappula.setVisible(false);
 	                if(arvo == 9) {
 	                	//peli päättyy
-						kentta.avaaRuudut();
+						kentta.avaaRuudukko();
 						System.out.println("Peli loppui");
 	                }
 	                else {
@@ -130,7 +130,7 @@ public class Ruutu extends Pane {
 	}
 
 	/**
-	 * Poistaa nappulan ja ruudun labelin arvon
+	 * Poistaa nappulan näkyvyyden ja asettaa näkyviin ruutua vastaavan labelin arvon
 	 */
 	public void poistaNappula() {
         nappula.setVisible(false);
@@ -141,7 +141,15 @@ public class Ruutu extends Pane {
         label.setVisible(true);
         nappulaPois = true;
 	}
-	
+
+	/**
+	 * asettaa nappulan takaisin näkyväksi ja piilottaa sen alla olevan Labelin arvon
+	 */
+	public void asetaNappula() {
+		nappula.setVisible(true);
+		label.setVisible(false);
+		nappulaPois = false;
+	}
 
 	
 	public Ruutu annaRuutu() {
@@ -162,9 +170,6 @@ public class Ruutu extends Pane {
 	public boolean nappulaPoistettu() {
 		return nappulaPois;
 	}
-	
-	public Button annaNappula() {
-		return nappula;
-	}
+
 	
 }

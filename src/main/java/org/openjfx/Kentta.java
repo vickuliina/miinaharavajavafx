@@ -8,9 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -60,8 +59,6 @@ public class Kentta {
         luoAlustaPaneeli();
         luoYlapalkki();
     	luoRuudukko();
-    	asetaPommit();
-    	asetaNumerot();
     	
 		
 		//TESTI, tulostaa pohjaruudukon komentoriville
@@ -108,6 +105,9 @@ public class Kentta {
     		}
     	}
 
+    	asetaPommit();
+    	asetaNumerot();
+
     	//lisataan ruudukko alustapaneeliin
 		ruudukko.setAlignment(Pos.CENTER);
     	alustaPaneeli.setCenter(ruudukko);
@@ -120,12 +120,15 @@ public class Kentta {
 		ylapalkki = new HBox();
 
 		//luodaan lippujenemäärän kertova alue
-		Text testiTeksti = new Text("Testi2");
-
+		TextField testiTeksti = new TextField("Testi2");
+		//testiTeksti.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK)));
 
 		//luodaan "uusipeli"-nappula
 		uusipeliNappula = new Button("Uusi Peli");
 		uusipeliNappula.setPrefSize(80,40);
+		uusipeliNappula.setOnMouseClicked( e -> {
+			uusiPeli();
+		});
 
 		//luodaan aika ruutu
 
@@ -146,7 +149,10 @@ public class Kentta {
 	 * pommin arvo = 9
 	 */
 	public void asetaPommit() {
-		while(pommiMaara > 0) {
+		//uutta pelia varten
+		int pommit = pommiMaara;
+
+		while(pommit > 0) {
 			Random random = new Random();
 			
 			int luku1 = random.nextInt(leveys);
@@ -154,7 +160,7 @@ public class Kentta {
 			
 			if(ruudut[luku1][luku2].annaArvo() != 9) {
 				ruudut[luku1][luku2].asetaArvo(9);
-				pommiMaara -= 1;
+				pommit -= 1;
 			}
 		}
 	}
@@ -235,7 +241,16 @@ public class Kentta {
 		}
 	}
 
-	
+	/**
+	 * Aloittaa uuden pelin, käytetään yläpalkin uusi-peli nappulasta
+	 * asettaa uudet arvot ruudukkoon
+	 * asettaa ajan nollaan
+	 */
+	public void uusiPeli() {
+		luoRuudukko();
+		System.out.println("Uusi peli");
+	}
+
 	/**
 	 * Avaa ruudun vierekkäiset ruudut ja mikäli jokin ympärillä on myös 0, eli tyhjä,
 	 * kutsuu metodi itseään uudella arvolla.
@@ -273,11 +288,12 @@ public class Kentta {
 		}
 	}
 
+
 	/**
 	 * Avaa kentän kaikki ruudut
 	 * Käytetään kun peli loppuu
 	 */
-	public void avaaRuudut() {
+	public void avaaRuudukko() {
 		for(int i=0; i<leveys; i++) {
 			for(int j=0; j<pituus; j++) {
 				ruudut[i][j].poistaNappula();
