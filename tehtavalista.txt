@@ -1,23 +1,47 @@
 Miinaharava
 
-- kentän toimivuus yleisesti
- - kentän hienosäätäminen
-  - reunat hohtamattomia, hehku pois nappuloiden ympäriltä
- - pelin loppuminen
-    -pommiin osuminen
-    -pelin voitto
- - kuvat peliin
-  - pommeihin
+Aloitusvalikko
+- minkä kokoinen peli valitaan
 
-- eri kenttien koot, voisiko laittaa mitat omiin enumeihin?
-- yläpalkki, aika ja pelin kulku (lippujen määrä...)
+Ylävalikko
+- menu, josta voisi valita kentän koon
+- ehkä paluu aloitusvalikkoon nappula kentälle?
+
+Pelikentta
+- 3 kokoa, pieni, keskikoko ja iso (voisiko laittaa mitat omiin enumeihin?)
+- pelin loppuminen
+    - pommiin osuminen
+        - uusi ikkuna?
+    - pelin voitto
+        - uusi ikkuna
+        - (tallennus)
+- kuvat pelin eri osiin
+    - pommit
+    - lippu
+
+Ylapalkki
+- mitat, miltä näyttää käyttöliittymässä
+- aika
+    - ajan muutos (ja tallennus)
+- lippujenmaara
+    - lippumäärän muutos pelin kulkiessa
+
+Muuta:
 - ajat ylös johonkin rankinlistaan, pelien tallentaminen
 
 
-Stage
-	Scene (alusta, johon GridPane rakentuuu)
-		GridPane ()
-			Ruutu[][]
-				Button
-				Label
-
+Stage Alkuvalikko
+Stage nykyinen
+Stage miinaharava
+    Scene pieniPelikentta
+    Scene keskiPelikentta
+    Scene isoPelikentta
+        BorderPane alustaPaneeli
+            Ruudukko ruudukko (extends GridPane)
+                Ruutu[][] (extends Pane)
+                   	Button nappula
+                    Label label
+            Ylapalkki ylaPalkki (extends HBox)
+                Label lippujenMaara
+                Button uusipeliNappula
+                Label aika
