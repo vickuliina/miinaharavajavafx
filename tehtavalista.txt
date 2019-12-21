@@ -3,7 +3,9 @@ Miinaharava
 - kentän toimivuus yleisesti
  - kentän hienosäätäminen
   - reunat hohtamattomia, hehku pois nappuloiden ympäriltä
- - pelin loppuminen, pommiin osuminen
+ - pelin loppuminen
+    -pommiin osuminen
+    -pelin voitto
  - kuvat peliin
   - pommeihin
 

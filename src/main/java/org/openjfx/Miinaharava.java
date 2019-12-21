@@ -83,7 +83,7 @@ public class Miinaharava extends Application {
 	public void luoYlapalkki() {
 		ylapalkki = new HBox();
 		ylapalkki.setPrefSize(400,60);
-		
+
 		//luodaan lippujenemäärän kertova alue
 		lippujenMaara = new Label("Lippujen määrä");
 		lippujenMaara.setPrefSize((400/3),40);
