@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class Miinaharava extends Application {
@@ -22,9 +24,9 @@ public class Miinaharava extends Application {
 	Ruudukko ruudukko;
 
 	HBox ylapalkki;
-	//joku tekstikentta lippujen lukumäärälle
+	Label lippujenMaara;
 	Button uusipeliNappula;
-	//joku aikalabel
+	Label aika;
 
     @Override
 	/**
@@ -80,24 +82,32 @@ public class Miinaharava extends Application {
 	 */
 	public void luoYlapalkki() {
 		ylapalkki = new HBox();
-
+		ylapalkki.setPrefSize(400,60);
+		
 		//luodaan lippujenemäärän kertova alue
-		TextField testiTeksti = new TextField("Testi2");
-		//testiTeksti.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK)));
+		lippujenMaara = new Label("Lippujen määrä");
+		lippujenMaara.setPrefSize((400/3),40);
+		lippujenMaara.setAlignment(Pos.CENTER_LEFT);
+		lippujenMaara.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THIN)));
 
 		//luodaan "uusipeli"-nappula
 		uusipeliNappula = new Button("Uusi Peli");
-		uusipeliNappula.setPrefSize(80,40);
+		uusipeliNappula.setPrefSize((400/3),40);
 		uusipeliNappula.setOnMouseClicked( e -> {
 			uusiPeli();
 		});
 
 		//luodaan aika ruutu
+		aika = new Label("AIKA");
+		aika.setPrefSize((400/3),40);
+		aika.setAlignment(Pos.CENTER_RIGHT);
+		aika.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THIN)));
 
 
 		//lisataan alueet ylapalkkiin
-		ylapalkki.getChildren().add(testiTeksti);
+		ylapalkki.getChildren().add(lippujenMaara);
 		ylapalkki.getChildren().add(uusipeliNappula);
+		ylapalkki.getChildren().add(aika);
 
 
 		ylapalkki.setAlignment(Pos.CENTER);

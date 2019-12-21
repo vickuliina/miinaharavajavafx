@@ -183,6 +183,4 @@ public class Ruutu extends Pane {
 	public boolean nappulaPoistettu() {
 		return nappulaPois;
 	}
-
-	
 }
