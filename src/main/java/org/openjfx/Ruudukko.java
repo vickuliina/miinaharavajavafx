@@ -6,7 +6,6 @@ import javafx.scene.layout.GridPane;
 import java.util.Random;
 
 public class Ruudukko {
-
     GridPane ruudukko;
     Ruutu[][] ruudut;
 
@@ -16,11 +15,11 @@ public class Ruudukko {
     int ruudukonKoko;
 
     /**
-     * Luodaan ruudukko
-     * @param leveys
-     * @param pituus
-     * @param pommiMaara
-     * @param ruudukonKoko
+     * Luodaan ruudukko eli luodaan Ruutu-olioita ja lisataan ne ruudukkoon
+     * @param leveys Ruutu ruutujen lukumäärä leveyssuunnassa
+     * @param pituus, Ruutu ruutujen lukumäärä pituussuunnassa
+     * @param pommiMaara, pommien määrä kentässä
+     * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
      */
     public Ruudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
         ruudukko = new GridPane();
@@ -30,7 +29,6 @@ public class Ruudukko {
         this.pituus = pituus;
         this.pommiMaara = pommiMaara;
         this.ruudukonKoko = ruudukonKoko;
-
 
         //luo ja asettaa Ruutu-oliot(eli ruudut) ruudukkoon
         for (int y=0; y<pituus; y++) {
@@ -43,12 +41,9 @@ public class Ruudukko {
             }
         }
 
+        //asetetaan ruudukkoon pommit ja numerot, jotka kertovat viereisten pommien lukumäärän
         asetaPommit();
         asetaNumerot();
-
-        //lisataan ruudukko alustapaneeliin
-        ruudukko.setAlignment(Pos.CENTER);
-
 
         //TESTI, tulostaa pohjaruudukon komentoriville
         for(int y=0; y<pituus; y++) {
@@ -60,16 +55,12 @@ public class Ruudukko {
 
         //TESTI, tulostaa pommien maaran komentoriville
         System.out.println("POMMIEN MÄÄRÄ: " + pommiMaara);
-
     }
 
 
     /**
-     * Luo ruudukon, joka sisältää Ruutu-olioita
-     */
-    /**
-     * Asetetaan randomisti pommit ruutuRuudukkoon
-     * Asettaa ruutuRuudukkoon jokaiselle ruudulle arvon.
+     * Asetetaan randomisti pommit ruudukkoon
+     * eli pommien lukumäärän verran lisää randomisti ruudukon Ruutu-olioille pommeja (eli arvon 9)
      * pommin arvo = 9
      */
     public void asetaPommit() {
@@ -91,8 +82,8 @@ public class Ruudukko {
 
 
     /**
-     * Asettaa ruutuRuudukkoon jokaiselle ruudulle arvon,
-     * sen mukaan kuinka monta pommia (eli arvoa 9) on ruudun ympärillä
+     * Asettaa ruudukon jokaiselle ruudulle arvon,
+     * sen mukaan kuinka monta pommia (eli arvoa 9) on kyseisen Ruutu-olion ympärillä
      */
     public void asetaNumerot() {
 
@@ -197,11 +188,10 @@ public class Ruudukko {
                     }
                 } catch (Exception e) {
                 }
-
-
             }
         }
     }
+
     /**
      * Avaa kentän kaikki ruudut
      * Käytetään kun peli loppuu
@@ -214,6 +204,10 @@ public class Ruudukko {
         }
     }
 
+    /**
+     * Palauttaa ruudukon
+     * @return palautettu ruudukko GridPanenina
+     */
     public GridPane annaRuudukko() {
         return ruudukko;
     }

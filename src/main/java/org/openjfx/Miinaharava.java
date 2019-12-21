@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class Miinaharava extends Application {
 	Stage miinaharava;
 	//Stage alkuvalikko;	//toteutetaan myöhemmin
-	//	Stage nykyinen;	//toteutetaan myöhemmin
+	//Stage nykyinen;	//toteutetaan myöhemmin
 
 	Scene pieniPelikentta;
 	//Scene keskiKentta;	//toteutetaan myöhemmin
@@ -26,9 +26,6 @@ public class Miinaharava extends Application {
 	Button uusipeliNappula;
 	//joku aikalabel
 
-	int ruudukonKoko;
-	int ikkunanKoko;
-	
     @Override
 	/**
 	 * Itse pelin aloitus, toimii alkuun vain pienellä kentalla, muut rakennetaan myohemmin
@@ -40,16 +37,16 @@ public class Miinaharava extends Application {
     	//isoKentta = new Kentta("iso", 24, 99, 700);
 
 		miinaharava = new Stage();
-		miinaharava.setTitle("miinaharava");
+		miinaharava.setTitle("Miinaharava");
 
 		//luodaan alustapaneeli ja annetaan sille tyylikansio käytettäväksi
 		alustaPaneeli = new BorderPane();
-		pieniPelikentta = new Scene(alustaPaneeli, ruudukonKoko, ruudukonKoko);
+		pieniPelikentta = new Scene(alustaPaneeli);
 		pieniPelikentta.getStylesheets().add("tyyli.css");
 
 
 		//500 on pienen pelikentän ikkunakoko
-		this.ikkunanKoko = 500;
+		int ikkunanKoko = 500;
 		//asettaa ikkunan hieman leveämmäksi, kuin mitä kenttä
 		miinaharava.setWidth(ikkunanKoko);
 		miinaharava.setHeight(ikkunanKoko);
@@ -64,17 +61,16 @@ public class Miinaharava extends Application {
 
 
 	/**
-	 * Luo uuden ruudukon
-	 * @param leveys kentän koko leveyssuunnassa
-	 * @param pituus, kentan koko pituussuunnassa
+	 * Luo uuden ruudukon ja lisää sen alustaPaneeliin
+	 * @param leveys Ruutu ruutujen lukumäärä leveyssuunnassa
+	 * @param pituus, Ruutu ruutujen lukumäärä pituussuunnassa
 	 * @param pommiMaara, pommien määrä kentässä
 	 * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
 	 */
 	public void luoRuudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
 		//luodaan ruudukko
 		ruudukko = new Ruudukko(leveys, pituus, pommiMaara, ruudukonKoko);
-		alustaPaneeli.setCenter(ruudukko.annaRuudukko());
-
+		ruudukko.annaRuudukko().setAlignment(Pos.CENTER);
 		alustaPaneeli.setCenter(ruudukko.annaRuudukko());
 	}
 
@@ -111,9 +107,10 @@ public class Miinaharava extends Application {
 	/**
 	 * Aloittaa uuden pelin, käytetään yläpalkin uusi-peli nappulasta
 	 * asettaa uudet arvot ruudukkoon
-	 * asettaa ajan nollaan
+	 * nollaa ajan
 	 */
 	public void uusiPeli() {
+		//luodaan uusi pienikenttäpeli
 		luoRuudukko(8, 8,9, 400);
 		System.out.println("Uusi peli");
 	}

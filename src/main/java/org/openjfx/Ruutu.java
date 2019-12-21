@@ -33,8 +33,8 @@ public class Ruutu extends Pane {
 
 	/**
 	 * luo ruudun
-	 * @param x, ruudun vaakarivin paikka kentassa
-	 * @param y, ruudun pystyrivin poikka kentassa
+	 * @param x, ruudun vaakarivin paikka ruudukossa
+	 * @param y, ruudun pystyrivin poikka ruudukossa
 	 * @param ruudukko, ruudukko, johon ruudut asetetaan
 	 */
 	public Ruutu(int x, int y, Ruudukko ruudukko) {
@@ -43,19 +43,13 @@ public class Ruutu extends Pane {
 		this.y = y;
 		
 		nappulaPois = false;
-		
 		nappula = new Button();
 		nappula.setVisible(true);
 
-		//"piilottaa" hehkun pois
-		//nappula.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
-
-		
 		this.getChildren().add(nappula);
 		
 		luoLabel();
 		label.setVisible(false);
-		
 		this.getChildren().add(label);
 
 		nappula.setOnMouseClicked(e -> {
@@ -120,17 +114,9 @@ public class Ruutu extends Pane {
 		label.setPrefSize(50, 50);
 		label.setAlignment(Pos.CENTER);
 	}
-	
-	public void asetaArvo(int uusiArvo) {
-		this.arvo = uusiArvo;
-	}
-	
-	public int annaArvo() {
-		return this.arvo;
-	}
 
 	/**
-	 * Poistaa nappulan näkyvyyden ja asettaa näkyviin ruutua vastaavan labelin arvon
+	 * Poistaa nappulan näkyvyyden ja asettaa näkyviin kyseisen ruudun Labelin arvon
 	 */
 	public void poistaNappula() {
         nappula.setVisible(false);
@@ -143,7 +129,7 @@ public class Ruutu extends Pane {
 	}
 
 	/**
-	 * asettaa nappulan takaisin näkyväksi ja piilottaa sen alla olevan Labelin arvon
+	 * asettaa nappulan takaisin näkyväksi ja piilottaa sen "alla olevan" Labelin arvon
 	 */
 	public void asetaNappula() {
 		nappula.setVisible(true);
@@ -151,15 +137,42 @@ public class Ruutu extends Pane {
 		nappulaPois = false;
 	}
 
-	
+	/**
+	 * Asetetaan ruudulle arvo
+	 * @param uusiArvo arvo, joka halutaan lisätä ruudulle
+	 */
+	public void asetaArvo(int uusiArvo) {
+		this.arvo = uusiArvo;
+	}
+
+	/**
+	 * Palauttaa ruudun arvo
+	 * @return ruudun arvo
+	 */
+	public int annaArvo() {
+		return this.arvo;
+	}
+
+	/**
+	 * Palauttaa kyseisen Ruutu-olion
+	 * @return Ruutu-olio
+	 */
 	public Ruutu annaRuutu() {
 		return this;
 	}
-	
+
+	/**
+	 * Antaa ruudun x-koordinaatin
+	 * @return x-koodrinaatin arvo kokonaislukuna
+	 */
 	public int annaX() {
 		return x;
 	}
-	
+
+	/**
+	 * Antaa ruudun y-koordinaatin
+	 * @return y-koodrinaatin arvo kokonaislukuna
+	 */
 	public int annaY() {
 		return y;
 	}
