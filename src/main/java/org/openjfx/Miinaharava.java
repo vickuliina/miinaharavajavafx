@@ -5,10 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class Miinaharava extends Application {
@@ -22,15 +20,11 @@ public class Miinaharava extends Application {
 	BorderPane alustaPaneeli;
 
 	Ruudukko ruudukko;
-
 	HBox ylapalkki;
-	Label lippujenMaara;
-	Button uusipeliNappula;
-	Label aika;
 
     @Override
-	/**
-	 * Itse pelin aloitus, toimii alkuun vain pienellä kentalla, muut rakennetaan myohemmin
+	/*
+	  Itse pelin aloitus, toimii alkuun vain pienellä kentalla, muut rakennetaan myohemmin
 	 */
     public void start(Stage stage) throws Exception {
     	//toteutetaan myöhemmin
@@ -53,9 +47,12 @@ public class Miinaharava extends Application {
 		miinaharava.setWidth(ikkunanKoko);
 		miinaharava.setHeight(ikkunanKoko);
 
+		//luodaan alkuun pienenkentän muokaiset ruudukko ja yläpalkki
 		luoRuudukko(8,8,9,400);
-    	luoYlapalkki();
+    	ylapalkki = new Ylapalkki(this,400, 60);
 
+		ylapalkki.setAlignment(Pos.CENTER);
+		alustaPaneeli.setTop(ylapalkki);
 
 		miinaharava.setScene(pieniPelikentta);
 		miinaharava.show();
@@ -72,46 +69,8 @@ public class Miinaharava extends Application {
 	public void luoRuudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
 		//luodaan ruudukko
 		ruudukko = new Ruudukko(leveys, pituus, pommiMaara, ruudukonKoko);
-		ruudukko.annaRuudukko().setAlignment(Pos.CENTER);
-		alustaPaneeli.setCenter(ruudukko.annaRuudukko());
-	}
-
-
-	/**
-	 * Tekee yläpalkin ja lisää sen alustaPaneeliin
-	 */
-	public void luoYlapalkki() {
-		ylapalkki = new HBox();
-		ylapalkki.setPrefSize(400,60);
-
-		//luodaan lippujenemäärän kertova alue
-		lippujenMaara = new Label("Lippujen määrä");
-		lippujenMaara.setPrefSize((400/3),40);
-		lippujenMaara.setAlignment(Pos.CENTER_LEFT);
-		lippujenMaara.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THIN)));
-
-		//luodaan "uusipeli"-nappula
-		uusipeliNappula = new Button("Uusi Peli");
-		uusipeliNappula.setPrefSize((400/3),40);
-		uusipeliNappula.setOnMouseClicked( e -> {
-			uusiPeli();
-		});
-
-		//luodaan aika ruutu
-		aika = new Label("AIKA");
-		aika.setPrefSize((400/3),40);
-		aika.setAlignment(Pos.CENTER_RIGHT);
-		aika.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THIN)));
-
-
-		//lisataan alueet ylapalkkiin
-		ylapalkki.getChildren().add(lippujenMaara);
-		ylapalkki.getChildren().add(uusipeliNappula);
-		ylapalkki.getChildren().add(aika);
-
-
-		ylapalkki.setAlignment(Pos.CENTER);
-		alustaPaneeli.setTop(ylapalkki);
+		ruudukko.setAlignment(Pos.CENTER);
+		alustaPaneeli.setCenter(ruudukko);
 	}
 
 	/**

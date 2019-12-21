@@ -1,12 +1,9 @@
 package org.openjfx;
 
-import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
-
 import java.util.Random;
 
-public class Ruudukko {
-    GridPane ruudukko;
+public class Ruudukko extends GridPane{
     Ruutu[][] ruudut;
 
     int leveys;
@@ -22,7 +19,6 @@ public class Ruudukko {
      * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
      */
     public Ruudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
-        ruudukko = new GridPane();
         ruudut = new Ruutu[leveys][pituus];
 
         this.leveys = leveys;
@@ -37,7 +33,7 @@ public class Ruudukko {
                 Ruutu ruutu = new Ruutu(x, y, this);
                 ruutu.asetaArvo(0);
                 ruudut[x][y] = ruutu;
-                ruudukko.add(ruudut[x][y], x, y);
+                this.add(ruudut[x][y], x, y);
             }
         }
 
@@ -203,13 +199,4 @@ public class Ruudukko {
             }
         }
     }
-
-    /**
-     * Palauttaa ruudukon
-     * @return palautettu ruudukko GridPanenina
-     */
-    public GridPane annaRuudukko() {
-        return ruudukko;
-    }
-
 }
