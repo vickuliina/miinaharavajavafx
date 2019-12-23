@@ -20,7 +20,7 @@ public class Miinaharava extends Application {
 	BorderPane alustaPaneeli;
 
 	Ruudukko ruudukko;
-	HBox ylapalkki;
+	Ylapalkki ylapalkki;
 
     @Override
 	/*
@@ -73,7 +73,7 @@ public class Miinaharava extends Application {
 	 */
 	public void luoRuudukko(int leveys, int pituus, int pommiMaara) {
 		//luodaan ruudukko
-		ruudukko = new Ruudukko(leveys, pituus, pommiMaara);
+		ruudukko = new Ruudukko(this, leveys, pituus, pommiMaara);
 		ruudukko.setAlignment(Pos.CENTER);
 		alustaPaneeli.setCenter(ruudukko);
 	}
@@ -89,6 +89,13 @@ public class Miinaharava extends Application {
 		System.out.println("Uusi peli");
 	}
 
+	public Ylapalkki annaYlapalkki() {
+		return ylapalkki;
+	}
+
+	public Ruudukko annaRuudukko() {
+		return ruudukko;
+	}
 	/**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

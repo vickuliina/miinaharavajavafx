@@ -56,6 +56,8 @@ public class Ruutu extends Pane {
 			if(e.getButton() == MouseButton.SECONDARY) {
 				if(nappula.getText().equals("")) {
 					nappula.setText("L");
+
+					this.ruudukko.miinaharava.ylapalkki.lisaaLippu();
 				}
 				else {
 					nappula.setText("");

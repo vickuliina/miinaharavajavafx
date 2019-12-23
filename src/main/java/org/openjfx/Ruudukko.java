@@ -4,6 +4,7 @@ import javafx.scene.layout.GridPane;
 import java.util.Random;
 
 public class Ruudukko extends GridPane{
+    Miinaharava miinaharava;
     Ruutu[][] ruudut;
 
     int leveys;
@@ -12,11 +13,13 @@ public class Ruudukko extends GridPane{
 
     /**
      * Luodaan ruudukko eli luodaan Ruutu-olioita ja lisataan ne ruudukkoon
+     * @param miinaharava peli, jonne ruudukko tehdään
      * @param leveys Ruutu ruutujen lukumäärä leveyssuunnassa
      * @param pituus, Ruutu ruutujen lukumäärä pituussuunnassa
      * @param pommiMaara, pommien määrä kentässä
     */
-    public Ruudukko(int leveys, int pituus, int pommiMaara) {
+    public Ruudukko(Miinaharava miinaharava, int leveys, int pituus, int pommiMaara) {
+        this.miinaharava = miinaharava;
         ruudut = new Ruutu[leveys][pituus];
 
         this.leveys = leveys;
