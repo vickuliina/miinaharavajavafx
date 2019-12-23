@@ -9,22 +9,19 @@ public class Ruudukko extends GridPane{
     int leveys;
     int pituus;
     int pommiMaara;
-    int ruudukonKoko;
 
     /**
      * Luodaan ruudukko eli luodaan Ruutu-olioita ja lisataan ne ruudukkoon
      * @param leveys Ruutu ruutujen lukumäärä leveyssuunnassa
      * @param pituus, Ruutu ruutujen lukumäärä pituussuunnassa
      * @param pommiMaara, pommien määrä kentässä
-     * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
-     */
-    public Ruudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
+    */
+    public Ruudukko(int leveys, int pituus, int pommiMaara) {
         ruudut = new Ruutu[leveys][pituus];
 
         this.leveys = leveys;
         this.pituus = pituus;
         this.pommiMaara = pommiMaara;
-        this.ruudukonKoko = ruudukonKoko;
 
         //luo ja asettaa Ruutu-oliot(eli ruudut) ruudukkoon
         for (int y=0; y<pituus; y++) {

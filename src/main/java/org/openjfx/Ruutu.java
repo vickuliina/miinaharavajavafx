@@ -95,7 +95,10 @@ public class Ruutu extends Pane {
 			}
 		});
 
-		nappula.setPrefSize(50, 50);
+		nappula.setPrefSize(50, 50);	//pieni
+		//nappula.setPrefSize(40,40);	//keskikoko
+		//nappula.setPrefSize(30,30);	//iso
+
 	}
 	
 	/**
@@ -107,8 +110,10 @@ public class Ruutu extends Pane {
 		
 		label.setBorder(new Border(new BorderStroke(Color.LIGHTGREY, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-       
-		label.setPrefSize(50, 50);
+
+		label.setPrefSize(50, 50);	//pieni
+		//label.setPrefSize(40,40);	//keskikoko
+		//label.setPrefSize(30,30);	//iso
 		label.setAlignment(Pos.CENTER);
 	}
 

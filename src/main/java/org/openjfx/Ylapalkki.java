@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 public class Ylapalkki extends HBox {
     Miinaharava miinaharava;
 
-    HBox ylapalkki;
     Label lippujenMaara;
     Button uusipeliNappula;
     Label aika;

@@ -42,13 +42,19 @@ public class Miinaharava extends Application {
 
 
 		//500 on pienen pelikentän ikkunakoko
-		int ikkunanKoko = 500;
+		int ikkunanKoko = 550;	//pieni
+		//int ikkunanKoko = 750;	//keskikoko
+		//int ikkunanKoko = 800;	//iso
+
 		//asettaa ikkunan hieman leveämmäksi, kuin mitä kenttä
 		miinaharava.setWidth(ikkunanKoko);
 		miinaharava.setHeight(ikkunanKoko);
 
 		//luodaan alkuun pienenkentän muokaiset ruudukko ja yläpalkki
-		luoRuudukko(8,8,9,400);
+		luoRuudukko(8,8,9);	//pieni
+		//luoRuudukko(16,16,40);	//keskikoko
+		//luoRuudukko(24,24,99);	//iso
+
     	ylapalkki = new Ylapalkki(this,400, 60);
 
 		ylapalkki.setAlignment(Pos.CENTER);
@@ -64,11 +70,10 @@ public class Miinaharava extends Application {
 	 * @param leveys Ruutu ruutujen lukumäärä leveyssuunnassa
 	 * @param pituus, Ruutu ruutujen lukumäärä pituussuunnassa
 	 * @param pommiMaara, pommien määrä kentässä
-	 * @param ruudukonKoko ruudukon koko, minkä kokoisen ruudukon halutaan tehdä
 	 */
-	public void luoRuudukko(int leveys, int pituus, int pommiMaara, int ruudukonKoko) {
+	public void luoRuudukko(int leveys, int pituus, int pommiMaara) {
 		//luodaan ruudukko
-		ruudukko = new Ruudukko(leveys, pituus, pommiMaara, ruudukonKoko);
+		ruudukko = new Ruudukko(leveys, pituus, pommiMaara);
 		ruudukko.setAlignment(Pos.CENTER);
 		alustaPaneeli.setCenter(ruudukko);
 	}
@@ -80,11 +85,9 @@ public class Miinaharava extends Application {
 	 */
 	public void uusiPeli() {
 		//luodaan uusi pienikenttäpeli
-		luoRuudukko(8, 8,9, 400);
+		luoRuudukko(8, 8,9);
 		System.out.println("Uusi peli");
 	}
-
-
 
 	/**
      * The main() method is ignored in correctly deployed JavaFX application.
