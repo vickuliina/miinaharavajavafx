@@ -7,12 +7,12 @@ Peli on työnalla ja siksi vielä kesken.
 
 Projektin suunnitelukansio: tehtavalista.txt
 
-##Ohjelman suoritus
+## Ohjelman suoritus
 1. Importtaa projekti IntelJ IDEA:lla tai cloonaa repositio.
 2. Suorita ohjelman Miinaharava.java-kansion main-metodi.
 HUOM, Projekti on luotu käyttäen Mavenia.
 
-##Ohjelman runko
+## Ohjelman runko
 
 Miinaharava.java: Manuaalisesti voidaan valita kentän koko(ei vielä toimi) ja kutsua Ruudukkoa-luomaan halutun kokoisen pelin asetetuilla pommi määrillä.
 Ohjelma käynnistetään Miinaharava.javan main-metodissa.
