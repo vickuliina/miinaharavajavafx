@@ -30,5 +30,6 @@ Ohjelman yläpalkki ja sen toiminnalisuudet. Yläpalkki sisältää pommimerkkie
 ##### tyyli.css
 Ohjelman tyyli-tiedosto. Sisältää vielä vain nappuloiden hehkun poiston.
 
+![miinaharavajavafx_kuva](https://user-images.githubusercontent.com/36680532/75063686-0de0b000-54ee-11ea-91dd-9c51e8cdfa79.png)
 
 Versionhallinta: Turun yliopiston GitLab -> GitHub 3.2.2020
