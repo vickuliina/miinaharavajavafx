@@ -2,7 +2,7 @@
 
 
 Pelissä on käytetty JavaFX:aa graaffisen käyttöliittymän luomisessa ja ohjelma käyttää Mavenia.
-Koodin pohjana on yliopiston Käyttöliittymät-kurssilla esiintynyt esimerkki-projekti JavaFX:n toimimisesta.
+Koodin pohjana on Turun yliopiston Käyttöliittymät-kurssilla esiintynyt esimerkki-projekti JavaFX:n toimimisesta.
 Peli on työnalla ja siksi vielä kesken.
 
 Projektin suunnitelukansio: tehtavalista.txt
